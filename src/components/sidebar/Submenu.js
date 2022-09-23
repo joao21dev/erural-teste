@@ -13,7 +13,7 @@ const SidebarLink = styled(Link)`
   color: #fff;
 
   &:hover {
-    color: inherit;
+    color: #fff;
   }
 `;
 const SidebarLabel = styled.span`

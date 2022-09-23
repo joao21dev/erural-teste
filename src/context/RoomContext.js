@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { db } from "../firebase-config";
-import { collection, doc, getDocs } from "firebase/firestore";
+import { auth, db } from "../firebase-config";
+import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore";
 
 const RoomContext = createContext();
 const roomsCollectionRef = collection(db, "rooms");
@@ -11,10 +11,15 @@ export const RoomContextProvider = ({ children }) => {
     return data.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
   };
 
-
+  const registerRoom = async (roomName) => {
+    await addDoc(roomsCollectionRef, {
+      room_name: roomName,
+      room_owner: auth.currentUser.email,
+    });
+  };
 
   return (
-    <RoomContext.Provider value={{ getRooms }}>{children}</RoomContext.Provider>
+    <RoomContext.Provider value={{ getRooms, registerRoom }}>{children}</RoomContext.Provider>
   );
 };
 

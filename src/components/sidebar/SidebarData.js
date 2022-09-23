@@ -1,5 +1,6 @@
 import { AiFillHome } from "react-icons/ai";
-import { BiTrendingUp } from "react-icons/bi";
+
+import { GrAdd } from "react-icons/gr";
 
 export const SidebarData = [
   {
@@ -8,8 +9,8 @@ export const SidebarData = [
     icon: <AiFillHome />,
   },
   {
-    title: "Trending",
-    path: "/trending",
-    icon: <BiTrendingUp />,
+    title: "Nova Sala",
+    path: "/create-room",
+    icon: <GrAdd />,
   },
 ];

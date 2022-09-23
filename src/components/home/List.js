@@ -5,7 +5,7 @@ const ListWraper = styled.div`
   background-color: #e7eaee;
   border-radius: 15px;
   width: 800px;
-  min-height: 40vh;
+  min-height: 10vh;
   padding: 30px;
   margin-bottom: 50px;
 `;
