@@ -1,25 +1,31 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { AuthContextProvider } from "./context/Auth.Context";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
 import PrivateRoutes from "./routes/PrivateRoutes";
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route
-          path="/*"
-          element={
-            <ProtectedRoute>
-              <PrivateRoutes />
-            </ProtectedRoute>
-          }
-        />
-        {/**
-       <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      */}
-      </Routes>
+      <AuthContextProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/*"
+              element={
+                <ProtectedRoute>
+                  <PrivateRoutes />
+                </ProtectedRoute>
+              }
+            />
+
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthContextProvider>
     </>
   );
 }

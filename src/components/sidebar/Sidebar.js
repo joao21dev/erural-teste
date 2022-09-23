@@ -5,6 +5,7 @@ import { SidebarData } from "./SidebarData";
 import Submneu from "./Submenu";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase-config";
+import { UserAuth } from "../../context/Auth.Context";
 
 const SidebarNav = styled.div`
   background-color: #8c8eee;
@@ -46,6 +47,24 @@ const LogoutButton = styled.div`
 `;
 
 const Sidebar = () => {
+  const { logout } = UserAuth();
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      setLoading(true);
+      setTimeout(async () => {
+        await logout();
+        navigate("/login");
+        console.log("You are logged out");
+        setLoading(false);
+      }, 1000);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
   return (
     <>
       <SidebarNav>
@@ -60,15 +79,15 @@ const Sidebar = () => {
             );
           })}
         </SidebarWrap>
-        <LogoutButton>
+        <LogoutButton onClick={handleLogout}>
           {" "}
-          {"Logout"}
-          {
+          {!loading && "Logout"}
+          {loading && (
             <span className="indicator-progress" style={{ display: "block" }}>
               Carregando...{" "}
               <span className="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
-          }
+          )}
         </LogoutButton>
       </SidebarNav>
     </>
