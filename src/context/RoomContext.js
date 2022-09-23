@@ -1,6 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth, db } from "../firebase-config";
-import { addDoc, collection, doc, getDocs, setDoc } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  setDoc,
+} from "firebase/firestore";
 
 const RoomContext = createContext();
 const roomsCollectionRef = collection(db, "rooms");
@@ -18,8 +25,15 @@ export const RoomContextProvider = ({ children }) => {
     });
   };
 
+  const deleteRoom = async (roomId) => {
+    const roomDocRef = doc(db, "rooms", roomId);
+    await deleteDoc(roomDocRef);
+  };
+
   return (
-    <RoomContext.Provider value={{ getRooms, registerRoom }}>{children}</RoomContext.Provider>
+    <RoomContext.Provider value={{ getRooms, registerRoom, deleteRoom }}>
+      {children}
+    </RoomContext.Provider>
   );
 };
 

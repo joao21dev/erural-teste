@@ -8,7 +8,7 @@ const Room = styled.div`
   align-items: center;
   height: 100px;
   background-color: #fff;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   border-radius: 15px;
   padding: 20px;
 `;
@@ -55,7 +55,7 @@ const RoomCard = ({ name, owner }) => {
       </InfoWrapper>
 
       <AddButton>
-        <AiOutlineEnter size={28} color="#fff" />
+        Entrar
       </AddButton>
     </Room>
   );
