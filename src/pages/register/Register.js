@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../../context/Auth.Context";
+import { useAuth } from "../../context/Auth.Context";
 import { auth } from "../../firebase-config";
 
 const Register = () => {
@@ -8,7 +8,7 @@ const Register = () => {
   const [registerPassword, setRegisterPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const { register } = UserAuth();
+  const { register } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {

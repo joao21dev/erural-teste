@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { auth } from "../../firebase-config";
 import List from "./List";
 import RoomCard from "./RoomCard";
 
@@ -8,12 +9,20 @@ const Subtitle = styled.h1`
   color: #282842;
 `;
 
-const MyrRooms = () => {
+const MyrRooms = ({ rooms }) => {
   return (
     <>
       <Subtitle>Minhas Salas</Subtitle>
       <List>
-        <RoomCard />
+        {rooms.filter((room) => room.room_owner === auth.currentUser.email).map((room, index) => {
+          return (
+            <RoomCard
+              key={index}
+              name={room.room_name}
+              owner={room.room_owner}
+            />
+          );
+        })}
       </List>
     </>
   );

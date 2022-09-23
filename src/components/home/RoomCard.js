@@ -46,12 +46,12 @@ const AddButton = styled.div`
   }
 `;
 
-const RoomCard = () => {
+const RoomCard = ({ name, owner }) => {
   return (
     <Room>
       <InfoWrapper>
-        <RoomName>Sala 1</RoomName>
-        <RoomOwner>Joao21#ddd</RoomOwner>
+        <RoomName>{name}</RoomName>
+        <RoomOwner>{owner}</RoomOwner>
       </InfoWrapper>
 
       <AddButton>

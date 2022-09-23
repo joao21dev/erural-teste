@@ -5,7 +5,7 @@ import { SidebarData } from "./SidebarData";
 import Submneu from "./Submenu";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase-config";
-import { UserAuth } from "../../context/Auth.Context";
+import { useAuth } from "../../context/Auth.Context";
 
 const SidebarNav = styled.div`
   background-color: #8c8eee;
@@ -47,7 +47,7 @@ const LogoutButton = styled.div`
 `;
 
 const Sidebar = () => {
-  const { logout } = UserAuth();
+  const { logout } = useAuth();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useRooms } from "../../context/RoomContext";
 import List from "./List";
 import RoomCard from "./RoomCard";
 
@@ -8,12 +9,20 @@ const Subtitle = styled.h1`
   color: #282842;
 `;
 
-const AvaliableRooms = () => {
+const AvaliableRooms = ({ rooms }) => {
   return (
     <>
       <Subtitle>Salas Disponíveis</Subtitle>
       <List>
-        <RoomCard />
+        {rooms.map((room, index) => {
+          return (
+            <RoomCard
+              key={index}
+              name={room.room_name}
+              owner={room.room_owner}
+            />
+          );
+        })}
       </List>
     </>
   );
