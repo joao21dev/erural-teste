@@ -53,7 +53,7 @@ const Register = () => {
 
                 <div className="form-outline mb-4">
                   <label className="form-label" htmlFor="password">
-                    Senha
+                    Senha (acima de 6 caracteres)
                   </label>
                   <input
                     onChange={(event) => {
