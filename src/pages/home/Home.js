@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import AvaliableRooms from "../../components/home/AvaliableRooms";
 import MyrRooms from "../../components/home/MyRooms";
-import { useAuth } from "../../context/Auth.Context";
+import { useAuth } from "../../context/AuthContext";
 import { useRooms } from "../../context/RoomContext";
 
 const Container = styled.section`

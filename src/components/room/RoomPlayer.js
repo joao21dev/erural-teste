@@ -6,12 +6,12 @@ const PlayerWrapper = styled.div`
   background-color: #e7eaee;
   border-radius: 15px;
   width: 700px;
-  min-height: 10vh;
+  height: 43vh;
   padding: 30px;
-  margin-bottom: 50px;
+  margin-right: 50px;
 `;
 
-const RoomPlayer = ({url}) => {
+const RoomPlayer = ({ url }) => {
   return (
     <PlayerWrapper>
       <ReactPlayer url={url} />

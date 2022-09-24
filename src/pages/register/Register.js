@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../context/Auth.Context";
+import { useAuth } from "../../context/AuthContext";
 import { auth } from "../../firebase-config";
 
 const Register = () => {
@@ -37,8 +37,6 @@ const Register = () => {
               style={{ borderRadius: "1rem" }}
             >
               <div className="card-body p-5 text-center">
-                <h3 className="mb-5">Acessar Fav-Articles</h3>
-
                 <div className="form-outline mb-4">
                   <label className="form-label" htmlFor="email">
                     Email
