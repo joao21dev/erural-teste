@@ -14,7 +14,7 @@ const PrivateRoutes = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create-room" element={<CreateRoom />} />
-          <Route path='/room/:roomId' element={<Room />} />
+          <Route path='/:id' element={<Room />} />
         </Routes>
       </div>
     </>

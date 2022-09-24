@@ -28,10 +28,10 @@ const Home = () => {
     const data = await getRooms();
     setRooms(data);
   };
-  console.log(rooms);
   useEffect(() => {
     fetchData();
   }, []);
+
 
   return (
     <Container>

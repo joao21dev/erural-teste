@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import RoomPlayer from "../../components/room/RoomPlayer";
+import { useRooms } from "../../context/RoomContext";
 
 const Container = styled.section`
   display: flex;
@@ -15,10 +17,29 @@ const Title = styled.h1`
 `;
 
 const Room = () => {
+  const [room, setRoom] = useState([]);
+
+  const { id } = useParams();
+
+  console.log('id', id)
+
+  const { getSingleRoom } = useRooms();
+
+  const fetchData = async () => {
+    const data = await getSingleRoom(id);
+    setRoom(data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  console.log("singleRoom", room);
+
   return (
     <Container>
-      <Title>Sala 1</Title>
-      <RoomPlayer />
+      <Title>{room.room_name}</Title>
+      <RoomPlayer url={room.room_url}/>
     </Container>
   );
 };

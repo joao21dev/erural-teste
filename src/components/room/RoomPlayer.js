@@ -11,10 +11,10 @@ const PlayerWrapper = styled.div`
   margin-bottom: 50px;
 `;
 
-const RoomPlayer = () => {
+const RoomPlayer = ({url}) => {
   return (
     <PlayerWrapper>
-      <ReactPlayer url="https://www.youtube.com/watch?v=dh_2hYymgsg" />
+      <ReactPlayer url={url} />
     </PlayerWrapper>
   );
 };

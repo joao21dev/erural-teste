@@ -59,7 +59,7 @@ const RoomCard = ({ name, owner, video, roomId }) => {
         <RoomVideo>{video}</RoomVideo>
         <RoomOwner>{owner}</RoomOwner>
       </InfoWrapper>
-      <Link style={{ textDecoration: "none" }} to={`/room/${roomId}`}>
+      <Link style={{ textDecoration: "none" }} to={`/${roomId}`}>
         <EnterButton>Entrar</EnterButton>
       </Link>
     </Room>

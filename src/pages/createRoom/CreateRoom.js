@@ -21,7 +21,7 @@ const RoomInputWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  height: 150px;
+  height: 100px;
   background-color: #fff;
   border-radius: 15px;
   padding: 20px;
@@ -61,7 +61,6 @@ const AddButton = styled.div`
 
 const CreateRoom = () => {
   const [roomName, setRoomName] = useState("");
-  const [roomVideo, setRoomVideo] = useState("");
   const [roomUrl, setRoomUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -73,7 +72,7 @@ const CreateRoom = () => {
     try {
       setLoading(true);
       setTimeout(async () => {
-        await registerRoom(roomName, roomVideo, roomUrl);
+        await registerRoom(roomName, roomUrl);
         navigate("/");
         setLoading(false);
       }, 1000);
@@ -91,10 +90,6 @@ const CreateRoom = () => {
           <RoomNameInput
             placeholder="Nome da Sala"
             onChange={(e) => setRoomName(e.target.value)}
-          />
-          <RoomNameInput
-            placeholder="Nome do vídeo"
-            onChange={(e) => setRoomVideo(e.target.value)}
           />
           <RoomNameInput
             placeholder="URL do vídeo"

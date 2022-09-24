@@ -5,6 +5,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDoc,
   getDocs,
   setDoc,
 } from "firebase/firestore";
@@ -18,11 +19,17 @@ export const RoomContextProvider = ({ children }) => {
     return data.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
   };
 
-  const registerRoom = async (roomName, roomVideo, roomUrl) => {
+  const getSingleRoom = async (roomId) => {
+    const roomDocRef = doc(db, "rooms", roomId);
+    const roomDoc = await getDoc(roomDocRef);
+    return roomDoc.data();
+    };
+
+
+  const registerRoom = async (roomName, roomUrl) => {
     await addDoc(roomsCollectionRef, {
       room_name: roomName,
       room_owner: auth.currentUser.email,
-      room_video: roomVideo,
       room_url: roomUrl,
     });
   };
@@ -33,7 +40,7 @@ export const RoomContextProvider = ({ children }) => {
   };
 
   return (
-    <RoomContext.Provider value={{ getRooms, registerRoom, deleteRoom }}>
+    <RoomContext.Provider value={{ getRooms, registerRoom, deleteRoom, getSingleRoom }}>
       {children}
     </RoomContext.Provider>
   );
