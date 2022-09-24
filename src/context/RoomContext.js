@@ -18,10 +18,12 @@ export const RoomContextProvider = ({ children }) => {
     return data.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
   };
 
-  const registerRoom = async (roomName) => {
+  const registerRoom = async (roomName, roomVideo, roomUrl) => {
     await addDoc(roomsCollectionRef, {
       room_name: roomName,
       room_owner: auth.currentUser.email,
+      room_video: roomVideo,
+      room_url: roomUrl,
     });
   };
 

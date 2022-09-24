@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { AiOutlineEnter } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Room = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
+  height: 130px;
   background-color: #fff;
   margin-bottom: 16px;
   border-radius: 15px;
@@ -17,6 +18,10 @@ const InfoWrapper = styled.div`
 `;
 const RoomName = styled.h1`
   font-size: 24px;
+  color: #282842;
+`;
+const RoomVideo = styled.h1`
+  font-size: 18px;
   color: #282842;
 `;
 const RoomOwner = styled.div`
@@ -30,7 +35,7 @@ const RoomOwner = styled.div`
   }
 `;
 
-const AddButton = styled.div`
+const EnterButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,17 +51,17 @@ const AddButton = styled.div`
   }
 `;
 
-const RoomCard = ({ name, owner }) => {
+const RoomCard = ({ name, owner, video, roomId }) => {
   return (
     <Room>
       <InfoWrapper>
         <RoomName>{name}</RoomName>
+        <RoomVideo>{video}</RoomVideo>
         <RoomOwner>{owner}</RoomOwner>
       </InfoWrapper>
-
-      <AddButton>
-        Entrar
-      </AddButton>
+      <Link style={{ textDecoration: "none" }} to={`/room/${roomId}`}>
+        <EnterButton>Entrar</EnterButton>
+      </Link>
     </Room>
   );
 };

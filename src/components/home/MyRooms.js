@@ -60,6 +60,7 @@ const MyrRooms = ({ rooms }) => {
                   key={index}
                   name={room.room_name}
                   owner={room.room_owner}
+                  video={room.room_video}
                 />
                 <DeleteButton onClick={() => handleDelete(room.id)}>
                   {!loading && "Excluir"}

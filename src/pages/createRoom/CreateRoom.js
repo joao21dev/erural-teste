@@ -18,9 +18,10 @@ const Title = styled.h1`
 const RoomInputWrapper = styled.div`
   margin-bottom: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  height: 100px;
+  align-items: flex-start;
+  height: 150px;
   background-color: #fff;
   border-radius: 15px;
   padding: 20px;
@@ -60,6 +61,8 @@ const AddButton = styled.div`
 
 const CreateRoom = () => {
   const [roomName, setRoomName] = useState("");
+  const [roomVideo, setRoomVideo] = useState("");
+  const [roomUrl, setRoomUrl] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const { registerRoom } = useRooms();
@@ -70,7 +73,7 @@ const CreateRoom = () => {
     try {
       setLoading(true);
       setTimeout(async () => {
-        await registerRoom(roomName);
+        await registerRoom(roomName, roomVideo, roomUrl);
         navigate("/");
         setLoading(false);
       }, 1000);
@@ -89,7 +92,16 @@ const CreateRoom = () => {
             placeholder="Nome da Sala"
             onChange={(e) => setRoomName(e.target.value)}
           />
+          <RoomNameInput
+            placeholder="Nome do vídeo"
+            onChange={(e) => setRoomVideo(e.target.value)}
+          />
+          <RoomNameInput
+            placeholder="URL do vídeo"
+            onChange={(e) => setRoomUrl(e.target.value)}
+          />
         </RoomInputWrapper>
+
         <AddWrapper>
           <AddButton onClick={handleRegister}>
             {" "}
